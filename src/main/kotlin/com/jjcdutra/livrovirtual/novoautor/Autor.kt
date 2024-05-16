@@ -7,6 +7,7 @@ import jakarta.persistence.Id
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
+import java.time.LocalDateTime
 
 @Entity
 data class Autor(
@@ -24,9 +25,11 @@ data class Autor(
 
     @field:NotBlank
     @field:Size(max = 400)
-    val descricao: String
+    val descricao: String,
+
+    val instanteCriacao: LocalDateTime = LocalDateTime.now()
 ) {
     override fun toString(): String {
-        return "Autor(id=$id, nome='$nome', email='$email', descricao='$descricao')"
+        return "Autor(id=$id, nome='$nome', email='$email', descricao='$descricao', instanteCriacao=$instanteCriacao)"
     }
 }
